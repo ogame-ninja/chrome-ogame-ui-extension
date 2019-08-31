@@ -74,7 +74,9 @@
     ],
     "matches": [
       "http://*.ogame.gameforge.com/game/*",
-      "https://*.ogame.gameforge.com/game/*"
+      "https://*.ogame.gameforge.com/game/*",
+      "http://127.0.0.1:*/bots/*/browser/html*",
+      "https://*.ogame.ninja/bots/*/browser/html*"
     ],
     "run_at": "document_idle"
   } ],
@@ -88,10 +90,5 @@
     "48": "metalmine.48.jpeg",
     "128": "metalmine.128.jpeg"
   },
-  "author": "Eswak",
-  "applications": {
-    "gecko": {
-      "id": "uipp@allmyt.eu"
-    }
-  }
+  "author": "Eswak"
 }

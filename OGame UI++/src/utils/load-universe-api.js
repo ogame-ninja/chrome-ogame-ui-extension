@@ -2,9 +2,13 @@ var fn = function () {
   'use strict';
 
   window._loadUniverseApi = function _loadUniverseApi (cb) {
+    var l = new URL(document.location.href);
+    var tmp = l.pathname.split('/').slice(-1)[0].split('-');
+    var server = tmp[0];
+    var lang = tmp[1];
     console.log('OGame UI++ : loading universe data from OGame API...');
     $.ajax({
-      url: '/api/players.xml',
+      url: '/api/'+server+'/'+lang+'/players.xml',
       dataType: 'xml',
       success: function (playerData) {
         var players = {};
@@ -19,7 +23,7 @@ var fn = function () {
         });
 
         $.ajax({
-          url: '/api/universe.xml',
+          url: '/api/'+server+'/'+lang+'/universe.xml',
           dataType: 'xml',
           success: function (universeData) {
             $('planet', universeData).each(function () {
@@ -32,7 +36,7 @@ var fn = function () {
             });
 
             $.ajax({
-              url: '/api/highscore.xml?category=1&type=1',
+              url: '/api/'+server+'/'+lang+'/highscore.xml?category=1&type=1',
               dataType: 'xml',
               success: function (economyScores) {
                 $('player', economyScores).each(function () {
@@ -43,7 +47,7 @@ var fn = function () {
                 });
 
                 $.ajax({
-                  url: '/api/highscore.xml?category=1&type=0',
+                  url: '/api/'+server+'/'+lang+'/highscore.xml?category=1&type=0',
                   dataType: 'xml',
                   success: function (globalScores) {
                     $('player', globalScores).each(function () {
@@ -54,7 +58,7 @@ var fn = function () {
                     });
 
                     $.ajax({
-                      url: '/api/highscore.xml?category=1&type=3',
+                      url: '/api/'+server+'/'+lang+'/highscore.xml?category=1&type=3',
                       dataType: 'xml',
                       success: function (militaryScores) {
                         $('player', militaryScores).each(function () {
@@ -66,7 +70,7 @@ var fn = function () {
                         });
 
                         $.ajax({
-                          url: '/api/highscore.xml?category=1&type=2',
+                          url: '/api/'+server+'/'+lang+'/highscore.xml?category=1&type=2',
                           dataType: 'xml',
                           success: function (researchScores) {
                             $('player', researchScores).each(function () {
@@ -77,7 +81,7 @@ var fn = function () {
                             });
 
                             $.ajax({
-                              url: '/api/highscore.xml?category=1&type=7',
+                              url: '/api/'+server+'/'+lang+'/highscore.xml?category=1&type=7',
                               dataType: 'xml',
                               success: function (honorScores) {
                                 $('player', honorScores).each(function () {
@@ -88,7 +92,7 @@ var fn = function () {
                                 });
 
                                 $.ajax({
-                                  url: '/api/alliances.xml',
+                                  url: '/api/'+server+'/'+lang+'/alliances.xml',
                                   dataType: 'xml',
                                   success: function (alliancesData) {
                                     $('player', alliancesData).each(function () {
@@ -100,7 +104,7 @@ var fn = function () {
                                     });
 
                                     $.ajax({
-                                      url: '/api/serverData.xml',
+                                      url: '/api/'+server+'/'+lang+'/serverData.xml',
                                       dataType: 'xml',
                                       success: function (data) {
                                         var universe = window.xml2json(data).serverData;
