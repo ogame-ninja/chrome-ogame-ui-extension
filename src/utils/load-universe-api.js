@@ -105,7 +105,7 @@ window._loadUniverseApi = function _loadUniverseApi(cb) {
                                   });
 
                                   $.ajax({
-                                    url: '/api/localization.xml',
+                                    url: '/api/'+server+'/'+lang+'/localization.xml',
                                     dataType: 'xml',
                                     success: function (localizationData) {
                                       var labels = {
